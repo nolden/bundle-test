@@ -8,6 +8,6 @@ INSTALL(CODE "
     # use custom version of BundleUtilities
     SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/.. ${CMAKE_MODULE_PATH} )
     include(BundleUtilities)
-    fixup_bundle(\"${CMAKE_INSTALL_PREFIX}/bin/Main\" \"${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/liblibA.dylib\" \"${DIRS}\")
+    fixup_bundle(\"${CMAKE_INSTALL_PREFIX}/bin/Main\" \"${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/${CMAKE_SHARED_LIBRARY_PREFIX}libA${CMAKE_SHARED_LIBRARY_SUFFIX}\" \"${DIRS}\")
     " COMPONENT Runtime)
 
