@@ -7,8 +7,11 @@ int main(int , char**)
 {
   // A a;
   // B b;
-  void * p = dlopen("/Users/engelm/bundle-test/install/plugins/core/liblibA.dylib",RTLD_NOW);
-  if (p) { std::cout << "p yes" ; }
+  void * p = dlopen("/Users/engelm/bundle-test/install/plugins/liblibA.dylib",RTLD_NOW);
+  if (p) { std::cout << "libA: yes" ; }
+  
+  p = dlopen("/Users/engelm/bundle-test/install/plugins/liblibC.dylib",RTLD_NOW);
+  if (p) { std::cout << "libC: yes" ; }
 
   return 0;
 
