@@ -1,5 +1,6 @@
+#include "libAExport.h"
 
-class A {
+class LIB_A_EXPORT A {
   public:  
     A();
     int x;
