@@ -4,7 +4,13 @@ target_link_libraries(Main libA )
 
 install(TARGETS Main RUNTIME DESTINATION bin )
 # SET(DIRS ${CMAKE_LIBRARY_OUTPUT_DIRECTORY} ${ITK_LIBRARY_DIRS})
-SET(DIRS \${CMAKE_INSTALL_PREFIX}/plugins/libB \${CMAKE_INSTALL_PREFIX}/plugins ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}  ${ITK_LIBRARY_DIRS})
+SET(DIRS 
+  ${CMAKE_INSTALL_PREFIX}/bin
+  ${CMAKE_INSTALL_PREFIX}/plugins/libB 
+  ${CMAKE_INSTALL_PREFIX}/plugins 
+  ${CMAKE_LIBRARY_OUTPUT_DIRECTORY} 
+  ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} 
+  ${ITK_LIBRARY_DIRS})
 
 SET(PLUGIN \${CMAKE_INSTALL_PREFIX}/plugins/${CMAKE_SHARED_LIBRARY_PREFIX}libA${CMAKE_SHARED_LIBRARY_SUFFIX})
 LIST(APPEND PLUGIN \${CMAKE_INSTALL_PREFIX}/plugins/libB/${CMAKE_SHARED_LIBRARY_PREFIX}libB${CMAKE_SHARED_LIBRARY_SUFFIX})
@@ -39,7 +45,12 @@ INSTALL(CODE "
          ENDIF(APPLE)
       ENDIF()
     ENDMACRO(gp_item_default_embedded_path_override)
-
-    fixup_bundle(\"\${CMAKE_INSTALL_PREFIX}/bin/Main.app\" \"${PLUGIN}\" \"${DIRS}\")
+    
+    SET(_app_suffix ${CMAKE_EXECUTABLE_SUFFIX})
+    IF(APPLE)
+      SET(_app_suffix \".app\")
+    ENDIF()
+    
+    fixup_bundle(\"\${CMAKE_INSTALL_PREFIX}/bin/Main\${_app_suffix}\" \"${PLUGIN}\" \"${DIRS}\")
     " COMPONENT Runtime)
     

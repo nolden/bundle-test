@@ -1,7 +1,7 @@
 
-class A {
+class C {
   public:  
-    A();
+    C();
     int x;
 };
 

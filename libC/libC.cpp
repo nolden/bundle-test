@@ -1,8 +1,8 @@
-#include "libA.h"
+#include "libC.h"
 
 #include <libB.h>
 
-A::A()
+C::C()
 {
   B b;
   this->x = 1;
