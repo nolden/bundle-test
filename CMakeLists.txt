@@ -1,6 +1,6 @@
 SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_MODULE_PATH})
 
-SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/bin")
+SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/bin" "${CMAKE_INSTALL_PREFIX}/plugins" "${CMAKE_INSTALL_PREFIX}/plugins/libB" )
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH true)
 
 
@@ -13,3 +13,5 @@ add_subdirectory(libB)
 add_subdirectory(libC)
 add_subdirectory(libA)
 add_subdirectory(main)
+include(CPack)
+
